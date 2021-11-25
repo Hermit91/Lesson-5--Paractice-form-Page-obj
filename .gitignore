@@ -40,4 +40,4 @@ target/
 .vscode
 /gradlew
 /gradlew.bat
-/src/test/java/gmail/salokin1991/commonFiles/
+.src/test/java/gmail/salokin1991/commonFiles/
