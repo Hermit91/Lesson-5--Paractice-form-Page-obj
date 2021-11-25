@@ -26,7 +26,7 @@ public class RegistrationPage {
             citySelect = $("#city"),
             imgUpload = $("#uploadPicture");
 
-    public  CalendarComponent calendar = new CalendarComponent();
+    public CalendarComponent calendar = new CalendarComponent();
     public CheckSubmitForm submitForm = new CheckSubmitForm();
 
 

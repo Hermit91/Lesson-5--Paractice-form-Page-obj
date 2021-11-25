@@ -46,8 +46,12 @@ public class StudentsRegistrationWithPageObjectTests extends TestBase {
                 .submit();
 
 //        ASSERT
-        registrationPage.submitForm.checkSubmit(userFirstName, userLastName, userEmail, userGender, userMobNumber,
-                birthDay, birthMonth, birthYear, userSubject1, userHobby, meme, currentAddress, currentState,
-                currentCity);
+        registrationPage.submitForm.checkUserBasicInfo(userFirstName, userLastName, userGender);
+        registrationPage.submitForm.checkUserBirthday(birthDay, birthMonth, birthYear);
+        registrationPage.submitForm.checkUserContactInfo(userEmail, userMobNumber);
+        registrationPage.submitForm.checkUserAddress(currentAddress, currentState, currentCity);
+        registrationPage.submitForm.checkUserInterests(userSubject1, userHobby);
+        registrationPage.submitForm.checkUserFiles(meme);
+
     }
 }

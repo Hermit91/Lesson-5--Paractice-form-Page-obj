@@ -10,15 +10,28 @@ public class CheckSubmitForm {
     private SelenideElement submitTableHead = $("#example-modal-sizes-title-lg"),
             submitTable = $(".modal-body");
 
-    public void checkSubmit(String userFirstName, String userLastName, String userEmail, String userGender,
-                            String userMobNumber, String birthDay, String birthMonth, String birthYear,
-                            String userSubject1, String userHobby, String pictureName, String currentAddress,
-                            String currentState, String currentCity) {
-
+    public void checkUserBasicInfo(String userFirstName, String userLastName, String userGender) {
         submitTableHead.shouldHave(text(SUBMIT_TEXT));
-        submitTable.shouldHave(text(userFirstName + " " + userLastName), text(userEmail),
-                text(userGender), text(userMobNumber), text(birthDay + " " + birthMonth + "," + birthYear),
-                text(userSubject1), text(userHobby), text(pictureName.substring(4)), text(currentAddress),
-                text(currentState + " " + currentCity));
+        submitTable.shouldHave(text(userFirstName + " " + userLastName), text(userGender));
+    }
+
+    public void checkUserBirthday(String birthDay, String birthMonth, String birthYear) {
+        submitTable.shouldHave(text(birthDay + " " + birthMonth + "," + birthYear));
+    }
+
+    public void checkUserContactInfo(String userEmail, String userMobNumber) {
+        submitTable.shouldHave(text(userEmail), text(userMobNumber));
+    }
+
+    public void checkUserInterests(String userSubject1, String userHobby) {
+        submitTable.shouldHave(text(userSubject1), text(userHobby));
+    }
+
+    public void checkUserAddress(String currentAddress, String currentState, String currentCity) {
+        submitTable.shouldHave(text(currentAddress), text(currentState + " " + currentCity));
+    }
+
+    public void checkUserFiles(String pictureName) {
+        submitTable.shouldHave(text(pictureName.substring(4)));
     }
 }
