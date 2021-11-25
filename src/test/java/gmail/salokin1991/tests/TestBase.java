@@ -22,6 +22,8 @@ public class TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     FakeDataUtil2 fakeData = new FakeDataUtil2();
 
+    static String selenoidUrl = System.getProperty("selenoidUrl");
+
     static String login = credentials.login();
     static String password = credentials.password();
 
@@ -31,7 +33,7 @@ public class TestBase {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         Configuration.startMaximized = true;
-        Configuration.remote = format("https://%s:%s@selenoid.autotests.cloud/wd/hub/", login, password);
+        Configuration.remote = format(selenoidUrl, login, password);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);

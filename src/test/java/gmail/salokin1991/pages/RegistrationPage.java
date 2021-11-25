@@ -1,12 +1,14 @@
 package gmail.salokin1991.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import org.junit.jupiter.api.Tag;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
+@Tag("remote")
 public class RegistrationPage {
 
     // locators & elements

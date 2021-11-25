@@ -44,6 +44,20 @@ dependencies {
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
 }
 
+tasks.withType(Test) {
+//    systemProperty("environment", System.getProperty("environment", "stage")) // preprod, prod
+
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+}
+
 test {
     useJUnitPlatform()
 }
+
+task remote_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "remote"
+    }
+}
+

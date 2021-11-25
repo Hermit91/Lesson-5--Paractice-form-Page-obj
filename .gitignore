@@ -42,3 +42,4 @@ target/
 /gradlew.bat
 .src/test/java/gmail/salokin1991/commonFiles/
 /src/test/java/gmail/salokin1991/commonFiles/LoginTest.java
+/src/test/java/gmail/salokin1991/commonFiles/SystemProperties.java
