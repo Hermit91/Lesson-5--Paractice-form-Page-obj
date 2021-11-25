@@ -1,12 +1,9 @@
 package gmail.salokin1991.tests;
 
-import gmail.salokin1991.utils.FakeDataUtil2;
 import org.junit.jupiter.api.Test;
 
 
 public class StudentsRegistrationWithPageObjectTests extends TestBase {
-
-    FakeDataUtil2 fakeData = new FakeDataUtil2();
 
     @Test
     void firstTest() {
@@ -28,8 +25,8 @@ public class StudentsRegistrationWithPageObjectTests extends TestBase {
         String meme = "img/meme.jpg";
 
 //        ACT
-        registrationPage.openPage()
-                .calendar.setBirthdayDate(birthDay, birthMonth, birthYear);
+        registrationPage.openPage();
+        registrationPage.calendar.setBirthdayDate(birthDay, birthMonth, birthYear);
         registrationPage.closeFixeban()
                 .typeFirstName(userFirstName)
                 .typeLastName(userLastName)
@@ -52,6 +49,5 @@ public class StudentsRegistrationWithPageObjectTests extends TestBase {
         registrationPage.submitForm.checkUserAddress(currentAddress, currentState, currentCity);
         registrationPage.submitForm.checkUserInterests(userSubject1, userHobby);
         registrationPage.submitForm.checkUserFiles(meme);
-
     }
 }
