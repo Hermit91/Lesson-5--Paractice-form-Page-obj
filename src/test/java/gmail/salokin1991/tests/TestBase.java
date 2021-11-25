@@ -30,7 +30,7 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
 
-        String selenoidUrl = System.getProperty("selenoidUrl");
+        String selenoidUrl = System.getProperty("selenoidUrl", "https://%s:%s@selenoid.autotests.cloud/wd/hub/");
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         Configuration.startMaximized = true;
