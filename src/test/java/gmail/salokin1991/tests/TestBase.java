@@ -22,7 +22,6 @@ public class TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     FakeDataUtil2 fakeData = new FakeDataUtil2();
 
-    static String selenoidUrl = System.getProperty("selenoidUrl");
 
     static String login = credentials.login();
     static String password = credentials.password();
@@ -30,6 +29,8 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
+
+        String selenoidUrl = System.getProperty("selenoidUrl");
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         Configuration.startMaximized = true;
