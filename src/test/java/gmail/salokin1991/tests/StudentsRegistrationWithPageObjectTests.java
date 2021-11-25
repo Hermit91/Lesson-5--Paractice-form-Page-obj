@@ -1,10 +1,11 @@
 package gmail.salokin1991.tests;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 
-
+@Tag("remote")
 public class StudentsRegistrationWithPageObjectTests extends TestBase {
 
     @Test
