@@ -2,6 +2,8 @@ package gmail.salokin1991.tests;
 
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
+
 
 public class StudentsRegistrationWithPageObjectTests extends TestBase {
 
@@ -25,29 +27,50 @@ public class StudentsRegistrationWithPageObjectTests extends TestBase {
         String meme = "img/meme.jpg";
 
 //        ACT
-        registrationPage.openPage();
-        registrationPage.calendar.setBirthdayDate(birthDay, birthMonth, birthYear);
-        registrationPage.closeFixeban()
-                .typeFirstName(userFirstName)
-                .typeLastName(userLastName)
-                .typeEmail(userEmail)
-                .typeNumber(userMobNumber)
-                .selectGender(userGender)
-                .selectHobby(userHobby)
-                .selectSubject(userSubject1)
-                .scrollToSubmit()
-                .typeAddress(currentAddress)
-                .selectState(currentState)
-                .selectCity(currentCity)
-                .uploadImg(meme)
-                .submit();
+        step("Open students registration form", () -> {
+            registrationPage.openPage();
+        });
+
+        step("Fill students registration form", () -> {
+            step("Set birth date, than close fixeban", () -> {
+                registrationPage.calendar.setBirthdayDate(birthDay, birthMonth, birthYear);
+                registrationPage.closeFixeban();
+            });
+            step("Fill basic info", () -> {
+                registrationPage.typeFirstName(userFirstName)
+                        .typeLastName(userLastName)
+                        .selectGender(userGender);
+            });
+            step("Fill contacts", () -> {
+                registrationPage.typeEmail(userEmail)
+                        .typeNumber(userMobNumber);
+            });
+            step("Set interests, than scroll to submit button", () -> {
+                registrationPage.selectHobby(userHobby)
+                        .selectSubject(userSubject1)
+                        .scrollToSubmit();
+            });
+            step("Set address", () -> {
+                registrationPage.typeAddress(currentAddress)
+                        .selectState(currentState)
+                        .selectCity(currentCity);
+            });
+            step("Upload image", () -> {
+                registrationPage.uploadImg(meme);
+            });
+            step("Submit form", () -> {
+                registrationPage.submit();
+            });
+        });
 
 //        ASSERT
-        registrationPage.submitForm.checkUserBasicInfo(userFirstName, userLastName, userGender);
-        registrationPage.submitForm.checkUserBirthday(birthDay, birthMonth, birthYear);
-        registrationPage.submitForm.checkUserContactInfo(userEmail, userMobNumber);
-        registrationPage.submitForm.checkUserAddress(currentAddress, currentState, currentCity);
-        registrationPage.submitForm.checkUserInterests(userSubject1, userHobby);
-        registrationPage.submitForm.checkUserFiles(meme);
+        step("Verify successful form submit", () -> {
+            registrationPage.submitForm.checkUserBasicInfo(userFirstName, userLastName, userGender);
+            registrationPage.submitForm.checkUserBirthday(birthDay, birthMonth, birthYear);
+            registrationPage.submitForm.checkUserContactInfo(userEmail, userMobNumber);
+            registrationPage.submitForm.checkUserAddress(currentAddress, currentState, currentCity);
+            registrationPage.submitForm.checkUserInterests(userSubject1, userHobby);
+            registrationPage.submitForm.checkUserFiles(meme);
+        });
     }
 }
