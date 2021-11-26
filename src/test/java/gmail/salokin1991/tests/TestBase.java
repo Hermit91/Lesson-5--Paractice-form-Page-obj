@@ -23,14 +23,14 @@ public class TestBase {
     FakeDataUtil2 fakeData = new FakeDataUtil2();
 
 
-    static String login = credentials.login();
-    static String password = credentials.password();
 
 
     @BeforeAll
     static void beforeAll() {
 
 //        String selenoidUrl = System.getProperty("selenoidUrl", "https://%s:%s@selenoid.autotests.cloud/wd/hub/");
+        String login = credentials.login();
+        String password = credentials.password();
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         Configuration.startMaximized = true;
