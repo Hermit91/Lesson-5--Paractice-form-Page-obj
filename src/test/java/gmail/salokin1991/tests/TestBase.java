@@ -32,7 +32,7 @@ public class TestBase {
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         Configuration.startMaximized = true;
-        Configuration.remote = format(selenoidUrl, login, password);
+        Configuration.remote = format("https://%s:%s@" + selenoidUrl, login, password);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
