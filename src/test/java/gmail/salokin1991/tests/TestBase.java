@@ -28,13 +28,13 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
 
-//        String selenoidUrl = System.getProperty("selenoidUrl", "https://%s:%s@selenoid.autotests.cloud/wd/hub/");
+        String selenoidUrl = System.getProperty("selenoidUrl", "https://%s:%s@selenoid.autotests.cloud/wd/hub/");
         String login = credentials.login();
         String password = credentials.password();
 
         SelenideLogger.addListener("allure", new AllureSelenide());
         Configuration.startMaximized = true;
-        Configuration.remote = format("https://%s:%s@selenoid.autotests.cloud/wd/hub/", login, password);
+        Configuration.remote = format(selenoidUrl, login, password);
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
