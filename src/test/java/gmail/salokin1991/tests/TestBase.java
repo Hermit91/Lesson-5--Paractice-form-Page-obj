@@ -23,12 +23,10 @@ public class TestBase {
     FakeDataUtil2 fakeData = new FakeDataUtil2();
 
 
-
-
     @BeforeAll
     static void beforeAll() {
 
-        String selenoidUrl = System.getProperty("selenoidUrl");
+        String selenoidUrl = System.getProperty("url");
         String login = credentials.login();
         String password = credentials.password();
 
