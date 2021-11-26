@@ -28,7 +28,7 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
 
-        String selenoidUrl = System.getProperty("selenoidUrl", "https://%s:%s@selenoid.autotests.cloud/wd/hub/");
+        String selenoidUrl = System.getProperty("selenoidUrl");
         String login = credentials.login();
         String password = credentials.password();
 
